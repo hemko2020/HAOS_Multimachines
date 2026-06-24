@@ -2,8 +2,8 @@
 set -e
 
 echo "🚀 HAOS — Setup complet"
-HAOS_ROOT="/Users/hemko/HAOS_Multimachines/haos"
-MODELS_DIR="/Users/hemko/Models"
+HAOS_ROOT="/Users/Nom-de-votre-machine/HAOS_Multimachines/haos"
+MODELS_DIR="/Users/Nom-de-votre-machine/Models"
 
 # ── 1. Homebrew permissions ────────────────────────────────────────────────────
 echo "→ Fix Homebrew permissions..."
