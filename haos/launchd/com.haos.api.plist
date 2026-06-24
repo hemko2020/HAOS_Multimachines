@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- HAOS — Serveur API FastAPI -->
+    <!-- Port : 8000 | Exposed via Tailscale -->
+    <!-- Démarre après Redis (pas de dépendance automatique dans launchd) -->
+
+    <key>Label</key>
+    <string>com.haos.api</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/hemko/.venv/haos/bin/uvicorn</string>
+        <string>api.main:app</string>
+        <string>--host</string>
+        <string>0.0.0.0</string>
+        <string>--port</string>
+        <string>8000</string>
+        <string>--workers</string>
+        <string>1</string>
+        <string>--loop</string>
+        <string>asyncio</string>
+        <string>--log-level</string>
+        <string>info</string>
+        <string>--access-log</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/api.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/api.error.log</string>
+
+    <!-- Répertoire racine HAOS (pour les imports Python) -->
+    <key>WorkingDirectory</key>
+    <string>/Users/hemko/HAOS_Multimachines/haos</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/hemko</string>
+        <key>PATH</key>
+        <string>/Users/hemko/.venv/haos/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/hemko/HAOS_Multimachines/haos</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <!-- Attendre 3s avant de redémarrer (laisser Redis et LLM démarrer) -->
+    <key>ThrottleInterval</key>
+    <integer>15</integer>
+</dict>
+</plist>

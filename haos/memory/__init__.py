@@ -1,0 +1,1 @@
+# memory — Persistance SQLite (vault)

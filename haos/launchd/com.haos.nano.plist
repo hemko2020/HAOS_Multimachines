@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- HAOS — Serveur llama.cpp NANO -->
+    <!-- Modèle : mythos-nano-f16.gguf (~3GB) -->
+    <!-- Port : 8083 | Contexte : 8192 tokens | GPU : Metal (ngl 99) -->
+    <!-- NANO = always-on, répond très rapidement pour les tâches système -->
+
+    <key>Label</key>
+    <string>com.haos.nano</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/llama-server</string>
+        <string>-m</string>
+        <string>/Users/hemko/Models/mythos-nano-f16.gguf</string>
+        <string>--port</string>
+        <string>8083</string>
+        <string>--ctx-size</string>
+        <string>8192</string>
+        <string>-ngl</string>
+        <string>99</string>
+        <string>--host</string>
+        <string>127.0.0.1</string>
+        <string>--parallel</string>
+        <string>4</string>
+        <string>--flash-attn</string>
+        <string>--log-format</string>
+        <string>json</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/nano.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/nano.error.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/hemko/Models</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/hemko</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    </dict>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>ThrottleInterval</key>
+    <integer>5</integer>
+</dict>
+</plist>

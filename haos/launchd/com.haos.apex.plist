@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- HAOS — Serveur llama.cpp APEX -->
+    <!-- Modèle : Qwen3.6-35B-A3B-APEX-Balanced.gguf (~22GB) -->
+    <!-- Port : 8081 | Contexte : 32768 tokens | GPU : Metal (ngl 99) -->
+
+    <key>Label</key>
+    <string>com.haos.apex</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/llama-server</string>
+        <string>-m</string>
+        <string>/Users/hemko/Models/Qwen3.6-35B-A3B-APEX-Balanced.gguf</string>
+        <string>--port</string>
+        <string>8081</string>
+        <string>--ctx-size</string>
+        <string>32768</string>
+        <string>-ngl</string>
+        <string>99</string>
+        <string>--host</string>
+        <string>127.0.0.1</string>
+        <string>--parallel</string>
+        <string>1</string>
+        <string>--flash-attn</string>
+        <string>--log-format</string>
+        <string>json</string>
+    </array>
+
+    <!-- Démarrage automatique à la connexion -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Redémarrage automatique en cas de crash -->
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Logs stdout/stderr -->
+    <key>StandardOutPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/apex.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/apex.error.log</string>
+
+    <!-- Répertoire de travail -->
+    <key>WorkingDirectory</key>
+    <string>/Users/hemko/Models</string>
+
+    <!-- Variables d'environnement -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/hemko</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    </dict>
+
+    <!-- Priorité basse pour ne pas bloquer l'UI -->
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <!-- Délai de redémarrage après crash (secondes) -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+</dict>
+</plist>

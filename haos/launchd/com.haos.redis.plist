@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- HAOS — Serveur Redis -->
+    <!-- Port : 6379 (défaut) -->
+    <!-- Redis = bus nerveux de HAOS, doit démarrer EN PREMIER -->
+
+    <key>Label</key>
+    <string>com.haos.redis</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/redis-server</string>
+        <string>--port</string>
+        <string>6379</string>
+        <string>--bind</string>
+        <string>127.0.0.1</string>
+        <string>--maxmemory</string>
+        <string>512mb</string>
+        <string>--maxmemory-policy</string>
+        <string>allkeys-lru</string>
+        <string>--save</string>
+        <string>60 1000</string>
+        <string>--dir</string>
+        <string>/Users/hemko/HAOS_Multimachines/haos/data</string>
+        <string>--dbfilename</string>
+        <string>haos-redis.rdb</string>
+        <string>--loglevel</string>
+        <string>notice</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/redis.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/redis.error.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/hemko/HAOS_Multimachines/haos/data</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/hemko</string>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>ThrottleInterval</key>
+    <integer>5</integer>
+</dict>
+</plist>

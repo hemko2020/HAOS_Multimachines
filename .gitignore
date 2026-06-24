@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+haos-ihm/node_modules/
+haos-ihm/dist/
+
+# Environnement
+.env
+*.env.local
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# Logs
+*.log
+Library/Logs/
+
+# Base de données
+*.db
+*.sqlite
+
+# Modèles LLM (trop lourds)
+*.gguf
+Models/
+
+# IDE
+.vscode/
+.idea/
+*.swp

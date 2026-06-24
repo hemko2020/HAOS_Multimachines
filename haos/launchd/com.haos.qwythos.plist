@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- HAOS — Serveur llama.cpp QWYTHOS -->
+    <!-- Modèle : Qwythos-9B-Claude-Mythos-5-1M-MTP-BF16.gguf (~10GB) -->
+    <!-- Port : 8082 | Contexte : 32768 tokens | GPU : Metal (ngl 99) -->
+
+    <key>Label</key>
+    <string>com.haos.qwythos</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/llama-server</string>
+        <string>-m</string>
+        <string>/Users/hemko/Models/Qwythos-9B-Claude-Mythos-5-1M-MTP-BF16.gguf</string>
+        <string>--port</string>
+        <string>8082</string>
+        <string>--ctx-size</string>
+        <string>32768</string>
+        <string>-ngl</string>
+        <string>99</string>
+        <string>--host</string>
+        <string>127.0.0.1</string>
+        <string>--parallel</string>
+        <string>2</string>
+        <string>--flash-attn</string>
+        <string>--log-format</string>
+        <string>json</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/qwythos.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/hemko/Library/Logs/HAOS/qwythos.error.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/hemko/Models</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/hemko</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    </dict>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+</dict>
+</plist>
